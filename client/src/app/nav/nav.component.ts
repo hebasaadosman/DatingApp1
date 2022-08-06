@@ -14,17 +14,15 @@ export class NavComponent implements OnInit {
   model: any = {};
 
   constructor(public accountService: AccountService, private router: Router,
-  private toastr:ToastrService) { }
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
   }
   login() {
     this.accountService.login(this.model).subscribe({
-      next: response =>
-      { this.router.navigateByUrl('/members')}
-      , error: error =>
-        this.toastr.error(error.error)
+      next: response => { this.router.navigateByUrl('/members') }
+
     })
   }
 
