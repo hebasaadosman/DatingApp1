@@ -8,6 +8,7 @@ using API.Interfaces;
 using API.Data;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
+using API.Helpers;
 
 namespace API.Extensions
 {
@@ -17,6 +18,8 @@ namespace API.Extensions
         {
             //life time ->http request
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             IServiceCollection serviceCollection = services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(config.GetConnectionString("DefaultConnection"));
