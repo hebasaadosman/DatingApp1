@@ -49,7 +49,7 @@ export class TestErrorsComponent implements OnInit {
       next: response => {
         console.log(response)
       }, error: error => {
-        this.validationErrors = error;
+        this.validationErrors = error.error;
       }
     })
   }
