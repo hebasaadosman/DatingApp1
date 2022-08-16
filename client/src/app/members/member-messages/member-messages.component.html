@@ -1,10 +1,10 @@
 <div class="card">
     <div class="card-body">
-        <div *ngIf="messages?.length === 0">
+        <div *ngIf="(messageService.messageThread$ | async)?.length === 0">
             No message yet---
         </div>
-        <ul *ngIf="messages?.length > 0">
-            <li *ngFor="let message of messages">
+        <ul *ngIf="(messageService.messageThread$ | async).length > 0">
+            <li *ngFor="let message of (messageService.messageThread$ | async)">
                 <div>
                     <span class="chat-img float-right">
                         <img class="rounded-circle" src="{{message.senderPhotoUrl || './assets/user.png'}}"
@@ -30,13 +30,15 @@
 
 
                 </div>
+                <hr>
             </li>
         </ul>
     </div>
     <div class="card-footer">
         <form #messageForm="ngForm" (ngSubmit)="sendMessage()" autocomplete="off">
             <div class="input-group">
-                <input  name="messageContent" required type="text" [(ngModel)]="messageContent" class="form-control input-sm" placeholder="Send a private message">
+                <input name="messageContent" required type="text" [(ngModel)]="messageContent"
+                    class="form-control input-sm" placeholder="Send a private message">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit" [disabled]="!messageForm.valid">Send</button>
                 </div>
