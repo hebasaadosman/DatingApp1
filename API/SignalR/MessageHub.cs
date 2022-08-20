@@ -80,7 +80,7 @@ namespace API.SignalR
                     , new { username = sender.UserName, knownAs = sender.KnownAs });
                 }
             }
-               _unitOfWork.messageRepository.AddMessage(message);
+            _unitOfWork.messageRepository.AddMessage(message);
 
             if (await _unitOfWork.Complete())
             {

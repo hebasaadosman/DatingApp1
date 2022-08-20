@@ -25,7 +25,6 @@ export class PhotoEditorComponent implements OnInit {
     this.accuntService.currentUser$.pipe(take(1)).subscribe({
       next: (user) => {
         this.user = user;
-        console.log(user);
       }
     })
   }
@@ -33,7 +32,6 @@ export class PhotoEditorComponent implements OnInit {
     this.hasBaseDropzonOver = e;
   }
   ngOnInit(): void {
-    console.log(this.member)
     this.initializeUploader();
   }
   setMainPhoto(photo: Photo) {
