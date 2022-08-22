@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="mb-3">
     <input type="password" [class.is-invalid]=" ngControl.touched && ngControl.invalid" type={{type}}
         [formControl]="ngControl.control" class="form-control" placeholder={{label}}>
     <div *ngIf="ngControl.control.errors?.['required']" class="invalid-feedback">please enter a {{label}} </div>

@@ -1,4 +1,4 @@
-<div class="row mb-4">
+<div class="d-flex mb-4">
     <div class="btn-group" name="container">
         <button class="btn btn-primary" btnRadio="Unread" (click)="loadMessages()" [(ngModel)]="container">
             <i class="fa fa-envelope"></i>Unread
@@ -17,26 +17,28 @@
 <div class="row" *ngIf="messages?.length  >  0">
     <table class="table table-hover" style="cursor: pointer;">
 
-        <tbody>
+        <thead>
             <tr>
                 <th style="width: 40%;">Messages</th>
                 <th style="width: 20%;">From/To</th>
                 <th style="width: 20%;">Sent/Recived</th>
                 <th style="width: 20%;"></th>
             </tr>
+        </thead>
+        <tbody>
             <tr [hidden]="loading" *ngFor="let message of messages" routerLink="{{container==='Outbox'
             ? '/members/'+message.recipientUserName
             :'/members/'+message.senderUserName}}" [queryParams]="{tab:3}">
                 <td>{{message.content}}</td>
                 <td>
                     <div *ngIf="container==='Outbox'">
-                        <img class="img-circle rounded-circle mr-2"
+                        <img class="img-circle rounded-circle me-2"
                             src="{{message.recipientPhotoUrl || './assets/user.png'}}"
                             alt="{{message.recipientUserName}}">
                         <strong>{{message.recipientUserName | titlecase}}</strong>
                     </div>
                     <div *ngIf="container !=='Outbox'">
-                        <img class="img-circle rounded-circle mr-2"
+                        <img class="img-circle rounded-circle me-2"
                             src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="{{message.senderUserName}}">
                         <strong>{{message.senderUserName | titlecase}}</strong>
                     </div>

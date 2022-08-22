@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container">
         <a class="navbar-brand" routerLinkActive="active" routerLink="/">Dating App</a>
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav me-auto">
             <ng-container *ngIf="accountService.currentUser$ |async">
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/members">Matches</a>
@@ -24,7 +24,7 @@
         </ul>
         <div class="dropdown" *ngIf="(accountService.currentUser$ |async )as user" dropdown>
             <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
-            <a class=" dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.knownAs|| user.username|
+            <a class=" dropdown-toggle text-light ms-2 text-decoration-none" dropdownToggle>Welcome {{user.knownAs|| user.username|
                 titlecase}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
                 <a class="dropdown-item" routerLink="/member/edit">Edit Profile</a>
@@ -33,11 +33,11 @@
             </div>
 
         </div>
-        <form *ngIf="(accountService.currentUser$ |async)===null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0"
+        <form *ngIf="(accountService.currentUser$ |async)===null" #loginForm="ngForm" class="d-flex mt-2 mt-md-0"
             (ngSubmit)="login()" autocomplete="off">
-            <input class="form-control mr-sm-2" type="text" placeholder="UserName" name="username"
+            <input class="form-control me-sm-2" type="text" placeholder="UserName" name="username"
                 [(ngModel)]="model.username">
-            <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password"
+            <input class="form-control me-sm-2" type="password" placeholder="Password" name="password"
                 [(ngModel)]="model.password">
             <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
         </form>
